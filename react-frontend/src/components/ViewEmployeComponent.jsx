@@ -25,19 +25,26 @@ class ViewEmployeComponent extends Component {
                     <h3 className = "text-center"> Détails Employé</h3>
                     <div className = "card-body">
                         <div className = "row">
-                            <label> Nom Employé: </label>
+                            <label> Nom : </label>
                             <div> { this.state.employe.nom }</div>
                         </div>
                         <div className = "row">
-                            <label> Prénom Employé: </label>
+                            <label> Prénom : </label>
                             <div> { this.state.employe.prenom }</div>
                         </div>
+                        <div className="row">
+                            <label> Date de naissance : </label>
+                            <div> {this.state.employe.dateNaissance}</div>
+                        </div>
                         <div className = "row">
-                            <label> Email Employé: </label>
+                            <label> Email : </label>
                             <div> { this.state.employe.email }</div>
                         </div>
+                        <div className="row">
+                            <label> Téléphone : </label>
+                            <div> {this.state.employe.telephone}</div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         )

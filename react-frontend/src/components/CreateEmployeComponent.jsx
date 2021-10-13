@@ -6,21 +6,22 @@ class CreateEmployeComponent extends Component {
         super(props)
 
         this.state = {
-            // step 2
             id: this.props.match.params.id,
             nom: '',
             prenom: '',
-            email: ''
+            dateNaissance: '',
+            email: '',
+            telephone: ''
         }
         this.changeNomHandler = this.changeNomHandler.bind(this);
         this.changePrenomHandler = this.changePrenomHandler.bind(this);
+        this.changeDateNaissanceHandler = this.changeDateNaissanceHandler.bind(this);
+        this.changeEmailHandler = this.changeEmailHandler.bind(this);
+        this.changeTelephoneHandler = this.changeTelephoneHandler.bind(this);
         this.saveOrUpdateEmploye = this.saveOrUpdateEmploye.bind(this);
     }
 
-    // step 3
     componentDidMount(){
-
-        // step 4
         if(this.state.id === '_add'){
             return
         }else{
@@ -29,17 +30,19 @@ class CreateEmployeComponent extends Component {
                 this.setState({
                     nom: employe.nom,
                     prenom: employe.prenom,
-                    email: employe.email
+                    dateNaissance: employe.dateNaissance,
+                    email: employe.email,
+                    telephone: employe.telephone
                 });
             });
         }        
     }
+
     saveOrUpdateEmploye = (e) => {
         e.preventDefault();
-        let employe = { nom: this.state.nom, prenom: this.state.prenom, email: this.state.email};
+        let employe = { nom: this.state.nom, prenom: this.state.prenom, email: this.state.email, dateNaissance: this.state.dateNaissance, telephone: this.state.telephone};
         console.log('employe => ' + JSON.stringify(employe));
 
-        // step 5
         if(this.state.id === '_add'){
             EmployeService.createEmploye(employe).then(res =>{
                 this.props.history.push('/employes');
@@ -59,8 +62,16 @@ class CreateEmployeComponent extends Component {
         this.setState({prenom: event.target.value});
     }
 
-    changeEmailHandler= (event) => {
-        this.setState({email: event.target.value});
+    changeDateNaissanceHandler = (event) => {
+        this.setState({ dateNaissance: event.target.value });
+    }
+
+    changeEmailHandler = (event) => {
+        this.setState({ email: event.target.value });
+    }
+
+    changeTelephoneHandler = (event) => {
+        this.setState({ telephone: event.target.value });
     }
 
     cancel(){
@@ -74,6 +85,7 @@ class CreateEmployeComponent extends Component {
             return <h3 className="text-center">MAJ Employé</h3>
         }
     }
+
     render() {
         return (
             <div>
@@ -96,10 +108,20 @@ class CreateEmployeComponent extends Component {
                                         <input placeholder="Prénom" name="prenom" className="form-control"
                                                 value={this.state.prenom} onChange={this.changePrenomHandler}/>
                                         </div>
+                                        <div className="form-group">
+                                            <label> Date de naissance: </label>
+                                            <input placeholder="Date de naissance" name="dateNaissance" className="form-control"
+                                                value={this.state.dateNaissance} onChange={this.changeDateNaissanceHandler} />
+                                        </div>
                                         <div className = "form-group">
                                             <label> Email: </label>
                                             <input placeholder="Email" name="email" className="form-control" 
                                                 value={this.state.email} onChange={this.changeEmailHandler}/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label> Téléphone: </label>
+                                            <input placeholder="Téléphone" name="telephone" className="form-control"
+                                                value={this.state.telephone} onChange={this.changeTelephoneHandler} />
                                         </div>
 
                                         <button className="btn btn-success" onClick={this.saveOrUpdateEmploye}>Enregistrer</button>

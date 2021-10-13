@@ -18,9 +18,11 @@ class ListEmployeComponent extends Component {
             this.setState({employes: this.state.employes.filter(employe => employe.id !== id)});
         });
     }
+
     viewEmploye(id){
         this.props.history.push(`/view-employe/${id}`);
     }
+
     editEmploye(id){
         this.props.history.push(`/add-employe/${id}`);
     }
@@ -40,7 +42,7 @@ class ListEmployeComponent extends Component {
             <div>
                  <h2 className="text-center">Liste des employés</h2>
                  <div className = "row">
-                    <button className="btn btn-primary" onClick={this.addEmploye}> Ajouter Employé</button>
+                    <button className="btn btn-primary" onClick={this.addEmploye}>Ajouter Employé</button>
                  </div>
                  <br></br>
                  <div className = "row">
@@ -48,9 +50,11 @@ class ListEmployeComponent extends Component {
 
                             <thead>
                                 <tr>
-                                    <th> Nom Employé</th>
-                                    <th> Prénom Employé</th>
-                                    <th> Email Employé</th>
+                                    <th> Nom </th>
+                                    <th> Prénom </th>
+                                    <th> Date de naissance </th>
+                                    <th> Email </th>
+                                    <th> Téléphone </th>
                                     <th> Actions</th>
                                 </tr>
                             </thead>
@@ -59,22 +63,22 @@ class ListEmployeComponent extends Component {
                                     this.state.employes.map(
                                         employe => 
                                         <tr key = {employe.id}>
-                                             <td> { employe.nom} </td>   
-                                             <td> {employe.prenom}</td>
-                                             <td> {employe.email}</td>
-                                             <td>
+                                            <td> { employe.nom} </td>   
+                                            <td> {employe.prenom}</td>
+                                            <td> {employe.dateNaissance}</td>
+                                            <td> {employe.email}</td>
+                                            <td> {employe.telephone}</td>
+                                            <td>
                                                  <button onClick={ () => this.editEmploye(employe.id)} className="btn btn-info">Update </button>
                                                  <button style={{marginLeft: "10px"}} onClick={ () => this.deleteEmploye(employe.id)} className="btn btn-danger">Delete </button>
                                                  <button style={{marginLeft: "10px"}} onClick={ () => this.viewEmploye(employe.id)} className="btn btn-info">View </button>
-                                             </td>
+                                            </td>
                                         </tr>
                                     )
                                 }
                             </tbody>
                         </table>
-
                  </div>
-
             </div>
         )
     }

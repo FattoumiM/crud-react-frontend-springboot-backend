@@ -20,13 +20,12 @@ function App() {
                           <Route path = "/employes" component = {ListEmployeComponent}></Route>
                           <Route path = "/add-employe/:id" component = {CreateEmployeComponent}></Route>
                           <Route path = "/view-employe/:id" component = {ViewEmployeComponent}></Route>
-                          {/* <Route path = "/update-employe/:id" component = {UpdateEmployeComponent}></Route> */}
+                          <Route path = "/update-employe/:id" component = {UpdateEmployeComponent}></Route>
                     </Switch>
                 </div>
               <FooterComponent />
         </Router>
     </div>
-    
   );
 }
 
