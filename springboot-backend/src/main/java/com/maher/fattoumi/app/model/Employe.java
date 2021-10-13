@@ -1,5 +1,7 @@
 package com.maher.fattoumi.app.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,18 +23,26 @@ public class Employe {
 	@Column(name = "prenom")
 	private String prenom;
 	
+	@Column(name = "date_naissance")
+	private LocalDate dateNaissance;
+	
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "telephone")
+	private String telephone;
 	
 	public Employe() {
 		
 	}
 	
-	public Employe(String nom, String prenom, String email) {
+	public Employe(String nom, String prenom, LocalDate dateNaissance, String email, String telephone) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
 		this.email = email;
+		this.telephone = telephone;
 	}
 
 	public Long getId() {
@@ -59,6 +69,14 @@ public class Employe {
 		this.prenom = prenom;
 	}
 
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -66,5 +84,14 @@ public class Employe {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	
 	
 }
