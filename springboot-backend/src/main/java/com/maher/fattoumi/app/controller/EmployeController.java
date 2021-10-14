@@ -20,8 +20,11 @@ import com.maher.fattoumi.app.exception.ResourceNotFoundException;
 import com.maher.fattoumi.app.model.Employe;
 import com.maher.fattoumi.app.repository.EmployeRepository;
 
-@CrossOrigin(origins = "http://localhost:3000")
+import lombok.Data;
+
+@Data
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/v1/")
 public class EmployeController {
 
